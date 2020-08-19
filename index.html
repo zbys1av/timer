@@ -7,34 +7,34 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <header>
-        <!-- <input class="newDate" type="date" value="2001-09-12"> -->
-        <input id="hrs" class="hrs" type="number" max=24 min=0 placeholder="hrs">
-        <input id="min" class="min" type="number" max=60 min=0 placeholder="min">
-        <input id="sec" class="sec" type="number" max=60 min=0 placeholder="sec">
-        <button class="startTimer">start</button>
-        <button class="pause">pause</button>
-      </header>
-      <main>
-        <div id="date" class="date"></div>
-        <div id="countdown" class="countdown">
-            <div class="time">
-            <h2 id="hours">00</h2>
-            <p class="underText">h</p>
+        <header>
+            <!-- <input class="newDate" type="date" value="2001-09-12"> -->
+            <input id="hrs" class="hrs" type="number"  max=999 min=0 placeholder="hrs">
+            <input id="min" class="min" type="number"  max=60 min=0 placeholder="min">
+            <input id="sec" class="sec" type="number"  max=60 min=0 placeholder="sec">
+            <button class="startTimer">start</button>
+            <button class="pause">pause</button>
+        </header>
+        <main>
+            <div id="date" class="date"></div>
+            <div id="countdown" class="countdown">
+                <div class="time">
+                    <h2 id="hours">00</h2>
+                    <p class="underText">h</p>
+                </div>
+                <div class="time">
+                    <h2 id="minutes">00</h2>
+                    <p class="underText">m</p>
+                </div>
+                <div class="time">
+                    <h2 id="seconds">00</h2>
+                    <p class="underText">s</p>
+                </div>
             </div>
-            <div class="time">
-            <h2 id="minutes">00</h2>
-            <p class="underText">m</p>
-            </div>
-            <div class="time">
-            <h2 id="seconds">00</h2>
-            <p class="underText">s</p>
-            </div>
-        </div>
         </main>
-        <footer>
-            <p>made by zbyslav 2020</p>
-        </footer>
+            <footer>
+                <p>made by zbyslav 2020</p>
+            </footer>
         <script src="js/index.js"></script>
 </body>
 </html>

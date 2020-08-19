@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+body{
+    background-image: url(../img/watches.jpg);
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Alata", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input{
+    color: white;
+    background-color: rgba(15, 15, 15, 0.542);
+    border: 1px solid white;
+    transition: 0.4s;
+}
+
+input::placeholder{
+    color: white;
+}
+
+input:focus{
+    background-color: rgba(255, 255, 2555, 0.242);
+    outline: none;
+    transition: 0.4s;
+}
+
+button{
+    color: white;
+    background-color: rgba(15, 15, 15, 0.542);
+    border: 1px solid white;
+    transition: 0.4s;
+    text-transform: uppercase;
+}
+
+button:hover{
+    color: black;
+    background-color: rgba(255, 255, 2555, 0.542);
+    border: 1px solid white;
+    transition: 0.4s;
+}
+
+.countdown {
+    position: absolute;
+    top: 47%;
+    left: 44%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    transform: scale(2);
+    /* padding: 5px; */
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    background-color: rgba(15, 15, 15, 0.542);
+}
+
+.time {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 5px;
+    transition: all 0.7s;
+}
+
+#hours{
+    width: 55px;
+}
+
+#minutes{
+    width: 55px;
+}
+
+#seconds{
+    width: 55px;
+}
+  
+.underText{
+    font-size: 10px;
+    transition: all 0.7s;
+    margin: -3px 0 5px 1px;
+    padding: 0;
+}
+  
+.time h2 {
+    margin: 0 0 1px 0;
+    transition: all 0.7s;
+}
+
+footer{
+    color: white;
+    position: absolute;
+    top: 95%;
+}
+
+footer p{
+    text-transform: uppercase;
+    font-size: 10px;
+    background-color:rgba(15, 15, 15, 0.342);
+    padding: 2px;
+    border: 1px solid white;
+}
