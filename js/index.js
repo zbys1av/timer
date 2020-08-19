@@ -8,23 +8,14 @@ const loading = document.getElementById("loading");
 
 let fullSeconds = 0;
 
-// if (document.querySelector('.hrs').valueAsNumber === ""){
-//     hours.innerHTML = 0;
-// }
-// if (document.querySelector('.min').valueAsNumber === ""){
-//     hours.innerHTML = 0;
-// }
-// if (document.querySelector('.sec').valueAsNumber === ""){
-//     hours.innerHTML = 0;
-// }
+document.querySelector('.startTimer').addEventListener('click', startButton);
+document.querySelector('.pause').addEventListener('click', pause);
 
-document.querySelector('.startTimer').addEventListener('click', pause);
-document.querySelector('.clear').addEventListener('click', clearAll);
-
-function clearAll(){
-    hrs.innerHTML = 0;
-    min.innerHTML = 0;
-    sec.innerHTML = 0;
+function pause(){
+    document.querySelector('.hrs').value = hours.innerHTML;
+    document.querySelector('.min').value = minutes.innerHTML;
+    document.querySelector('.sec').value = seconds.innerHTML;
+    fullSeconds = 0;
 }
 
 function changeDate(){
@@ -51,7 +42,11 @@ function changeDate(){
 function updateCountdown() {
 //   const currentTime = new Date();
 // changeDate();
+
 fullSeconds--;
+if (fullSeconds < 0){
+    return;
+}
 const hors = Math.floor(fullSeconds / 60 / 60);
 const mnts = Math.floor((fullSeconds - (hors * 60 * 60)) / 60) % 60;
 const scnds = Math.floor(fullSeconds - (hors * 60 * 60) - (mnts * 60));
@@ -84,7 +79,17 @@ seconds.innerHTML = scnds;
 // }, 1000);
 
 // run every second
-function pause(){
+function startButton(){
+    if (document.querySelector('.hrs').value === ""){
+        document.querySelector('.hrs').value = 0;
+    }
+    if (document.querySelector('.min').value === ""){
+        document.querySelector('.min').value = 0;
+    }
+    if (document.querySelector('.sec').value === ""){
+        document.querySelector('.sec').value = 0;
+    }
     changeDate();
-    setInterval(updateCountdown, 1000);
 }
+
+setInterval(updateCountdown, 1000);
