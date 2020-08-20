@@ -5,44 +5,45 @@ const seconds = document.getElementById("seconds");
 const countdown = document.getElementById("countdown");
 const date = document.getElementById("date");
 const loading = document.getElementById("loading");
-
+let sound = new Audio("mp3/alarm.mp3");
 let fullSeconds = 0;
 
 document.querySelector('.startTimer').addEventListener('click', startButton);
 document.querySelector('.pause').addEventListener('click', pause);
+document.querySelector('.cleare').addEventListener('click', cleare);
+
+function cleare(){
+    document.querySelector('.hrs').value = "";
+    document.querySelector('.min').value = "";
+    document.querySelector('.sec').value = "";
+    fullSeconds = 0;
+    hours.innerHTML = "00";
+    minutes.innerHTML = "00";
+    seconds.innerHTML = "00";
+}
 
 function pause(){
     document.querySelector('.hrs').value = hours.innerHTML;
     document.querySelector('.min').value = minutes.innerHTML;
     document.querySelector('.sec').value = seconds.innerHTML;
     fullSeconds = 0;
+    sound.pause();
+    sound.currentTime = 0;
+    document.querySelector(".pause").innerText = "pause";
+    document.querySelector(".startTimer").style.visibility = "visible";
+    document.querySelector(".cleare").style.visibility = "visible";
 }
 
 function changeDate(){
     let hrs = document.querySelector('.hrs').valueAsNumber;
     let min = document.querySelector('.min').valueAsNumber;
     let sec = document.querySelector('.sec').valueAsNumber;
-//   const hors = new Date(hrs);
-//   const mnts = new Date(min);
-//   const scnd = new Date(sec);
-    // hours.innerHTML = hrs;
-    // minutes.innerHTML = min;
-    // seconds.innerHTML = sec;
     const timeInSec = (hrs*60*60) + min*60 + sec;
     fullSeconds = timeInSec;
     return fullSeconds;
 }
 
-// fullSeconds = changeDate();
-//background year
-// document.querySelector('.date').innerText = new Date().toLocaleDateString();
-// const startDate = new Date(document.querySelector('.newDate').valueAsNumber);
-
-//update time
 function updateCountdown() {
-//   const currentTime = new Date();
-// changeDate();
-
 fullSeconds--;
 if (fullSeconds < 0){
     return;
@@ -55,28 +56,24 @@ hours.innerHTML = hors;
 minutes.innerHTML = mnts;
 seconds.innerHTML = scnds;
 
-
-// const diff = changeDate();
-
-// //   const d = Math.floor(diff / 1000 / 60 / 60 / 24);
-//   const h = Math.floor(diff) % 60;
-//   const m = diff % 60;
-//   const s = Math.floor(diff / 1000) % 60;
-
-//   // add values to dom
-//   days.innerHTML = d;
-
-
-//   hours.innerHTML = ;
-//   minutes.innerHTML = ;
-//   seconds.innerHTML = ;
+alert();
+buttons();
 }
 
-// show spinner before countdown                                // ?????
-// setTimeout(() => {
-//   loading.remove();
-//   countdown.style.display = "flex";
-// }, 1000);
+function buttons(){
+    if (hours.innerHTML === "0" && minutes.innerHTML === "0" && seconds.innerHTML === "0"){
+        document.querySelector(".startTimer").style.visibility = "hidden";
+        document.querySelector(".cleare").style.visibility = "hidden";
+        document.querySelector(".pause").innerText = "OK";
+    }
+}
+
+function alert(){
+    if (hours.innerHTML === "0" && minutes.innerHTML === "0" && seconds.innerHTML === "0"){
+        sound.play();
+        sound.volume = 0.01;
+    }
+}
 
 // run every second
 function startButton(){
@@ -87,6 +84,11 @@ function startButton(){
         document.querySelector('.min').value = 0;
     }
     if (document.querySelector('.sec').value === ""){
+        document.querySelector('.sec').value = 0;
+    }
+    if (document.querySelector('.hrs').value === "" && document.querySelector('.min').value === "" && document.querySelector('.sec').value === ""){
+        document.querySelector('.hrs').value = 0;
+        document.querySelector('.min').value = 5;
         document.querySelector('.sec').value = 0;
     }
     changeDate();
