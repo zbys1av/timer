@@ -56,6 +56,8 @@ hours.innerHTML = hors;
 minutes.innerHTML = mnts;
 seconds.innerHTML = scnds;
 
+document.title = "TIMER | " + hors + " h " + mnts + " m " + scnds + " s ";
+
 alert();
 buttons();
 }
