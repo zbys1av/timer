@@ -52,11 +52,11 @@ const hors = Math.floor(fullSeconds / 60 / 60);
 const mnts = Math.floor((fullSeconds - (hors * 60 * 60)) / 60) % 60;
 const scnds = Math.floor(fullSeconds - (hors * 60 * 60) - (mnts * 60));
 
-hours.innerHTML = hors;
-minutes.innerHTML = mnts;
+hours.innerHTML = hors + ":";
+minutes.innerHTML = mnts + ":";
 seconds.innerHTML = scnds;
 
-document.title = "TIMER | " + hors + " h " + mnts + " m " + scnds + " s ";
+document.title = "TIMER | " + hors + ":" + mnts + ":" + scnds;
 
 alert();
 buttons();

@@ -10,32 +10,38 @@
 <body>
         <header>
             <!-- <input class="newDate" type="date" value="2001-09-12"> -->
-            <input id="hrs" class="hrs" type="number"  max=999 min=0 placeholder="hrs">
-            <input id="min" class="min" type="number"  max=60 min=0 placeholder="min">
-            <input id="sec" class="sec" type="number"  max=60 min=0 placeholder="sec">
-            <button id="startTimer" class="startTimer">start</button>
-            <button id="pause" class="pause">pause</button>
-            <button id="cleare" class="cleare">clear</button>
-            <a href="index.html" class="stopwatchLink">countdown</a>
+            <div>
+                <input id="hrs" class="hrs" type="number"  max=999 min=0 placeholder="hrs">
+                <input id="min" class="min" type="number"  max=60 min=0 placeholder="min">
+                <input id="sec" class="sec" type="number"  max=60 min=0 placeholder="sec">
+                <button id="startTimer" class="startTimer">start</button>
+                <button id="lap" class="lap">lap</button> 
+                <button id="pause" class="pause">pause</button>
+                <button id="cleare" class="cleare">clear</button>
+                <a href="index.html" class="stopwatchLink">countdown</a>
+            </div>
+            <div class="history">
+                <textarea id="history" placeholder="laps" readonly></textarea>
+            </div>
         </header>
         <main>
             <div id="date" class="date"></div>
             <div id="countdown" class="countdown">
                 <div class="time">
                     <h2 id="hours">00</h2>
-                    <p id="hoursUnderText" class="underText">h</p>
+                    <!-- <p id="hoursUnderText" class="underText">h</p> -->
                 </div>
                 <div class="time">
                     <h2 id="minutes">00</h2>
-                    <p id="minutesUnderText" class="underText">m</p>
+                    <!-- <p id="minutesUnderText" class="underText">m</p> -->
                 </div>
                 <div class="time">
                     <h2 id="seconds">00</h2>
-                    <p id="secondsUnderText" class="underText">s</p>
+                    <!-- <p id="secondsUnderText" class="underText">s</p> -->
                 </div>
                 <div class="time">
                     <h2 id="msec">00</h2>
-                    <p id="msecUnderText" class="underText">ms</p>
+                    <!-- <p id="msecUnderText" class="underText">ms</p> -->
                 </div>
             </div>
         </main>

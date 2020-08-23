@@ -3,6 +3,7 @@ const hours = document.getElementById("hours");
 const minutes = document.getElementById("minutes");
 const seconds = document.getElementById("seconds");
 const msecond = document.getElementById("msec");
+const history = document.getElementById("history");
 const countdown = document.getElementById("countdown");
 const date = document.getElementById("date");
 const loading = document.getElementById("loading");
@@ -12,15 +13,16 @@ let fullSeconds = 0;
 let mseconds = 0;
 let pauseTimer = 1;
 let intervalTime = 10;
+let laps = 0;
 
 let hors = 0;
 let mnts = 0;
 let scnds = 0;
 
 document.getElementById("hours").style.display = "none";
-document.getElementById("hoursUnderText").style.display = "none";
+// document.getElementById("hoursUnderText").style.display = "none";
 document.getElementById("minutes").style.display = "none";
-document.getElementById("minutesUnderText").style.display = "none";
+// document.getElementById("minutesUnderText").style.display = "none";
 
 document.querySelector(".hrs").style.visibility = "hidden";
 document.querySelector(".min").style.visibility = "hidden";
@@ -28,7 +30,33 @@ document.querySelector(".sec").style.visibility = "hidden";
 
 document.querySelector('.startTimer').addEventListener('click', startButton);
 document.querySelector('.pause').addEventListener('click', pause);
-document.querySelector('.cleare').addEventListener('click', cleare);
+document.querySelector('.cleare').addEventListener('click', fullCleare);
+document.querySelector('.lap').addEventListener('click', lap);
+
+function lap(){
+    laps++;
+    // let displayValue = history.innerHTML;
+    if (history.value === ""){
+        history.value = "lap " + laps + "-> " + hours.innerHTML + minutes.innerHTML + seconds.innerHTML + ":" + msec.innerHTML;
+    } else {
+        history.value = "lap " + laps + "-> " + hours.innerHTML + minutes.innerHTML + seconds.innerHTML + ":" + msec.innerHTML + "\n" + history.value;
+    }
+    cleare();
+}
+
+function fullCleare(){
+    document.querySelector('.hrs').value = "";
+    document.querySelector('.min').value = "";
+    document.querySelector('.sec').value = "";
+    fullSeconds = 0;
+    hours.innerHTML = "00";
+    minutes.innerHTML = "00";
+    seconds.innerHTML = "00";
+    msec.innerHTML = "00";
+    history.value = "";
+    mseconds = 0;
+
+}
 
 function cleare(){
     document.querySelector('.hrs').value = "";
@@ -57,11 +85,11 @@ function miliseconds(){
     }
     if (hors > 0){
         document.getElementById("hours").style.display = "block";
-        document.getElementById("hoursUnderText").style.display = "block";
+        // document.getElementById("hoursUnderText").style.display = "block";
     }
     if (mnts > 0){
         document.getElementById("minutes").style.display = "block";
-        document.getElementById("minutesUnderText").style.display = "block";
+        // document.getElementById("minutesUnderText").style.display = "block";
     }
 }
 
@@ -130,10 +158,12 @@ function updateCountdown() {
         mnts = Math.floor((fullSeconds - (hors * 60 * 60)) / 60) % 60;
         scnds = Math.floor(fullSeconds - (hors * 60 * 60) - (mnts * 60));
         
-        hours.innerHTML = hors;
-        minutes.innerHTML = mnts;
+        hours.innerHTML = hors + ":";
+        minutes.innerHTML = mnts + ":";
         seconds.innerHTML = scnds;
             
+        document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds;
+
         // alert();
         // buttons();
         }

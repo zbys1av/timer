@@ -15,6 +15,24 @@ body{
     overflow: hidden;
 }
 
+.history{
+    display: flex;
+    justify-content: flex-end;
+}
+
+textarea{
+    resize: none;
+    margin: 25px 0 0 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.342);
+    border: 1px solid white;
+    height: 250px;
+}
+
+textarea:focus{
+    outline: none;
+}
+
 a{
     color: white;
     text-transform: uppercase;
