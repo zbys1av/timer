@@ -64,6 +64,7 @@ input::-webkit-inner-spin-button {
 }
 
 input{
+    display: none;
     color: white;
     background-color: rgba(15, 15, 15, 0.542);
     border: 1px solid white;

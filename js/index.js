@@ -7,6 +7,9 @@ const date = document.getElementById("date");
 const loading = document.getElementById("loading");
 let sound = new Audio("mp3/alarm.mp3");
 let fullSeconds = 0;
+let hrs;
+let min;
+let sec;
 
 document.querySelector('.startTimer').addEventListener('click', startButton);
 document.querySelector('.pause').addEventListener('click', pause);
@@ -23,8 +26,8 @@ function cleare(){
 }
 
 function pause(){
-    document.querySelector('.hrs').value = hours.innerHTML;
-    document.querySelector('.min').value = minutes.innerHTML;
+    document.querySelector('.hrs').value = hours.innerHTML.slice(0, -1);
+    document.querySelector('.min').value = minutes.innerHTML.slice(0, -1);
     document.querySelector('.sec').value = seconds.innerHTML;
     fullSeconds = 0;
     sound.pause();
@@ -35,9 +38,9 @@ function pause(){
 }
 
 function changeDate(){
-    let hrs = document.querySelector('.hrs').valueAsNumber;
-    let min = document.querySelector('.min').valueAsNumber;
-    let sec = document.querySelector('.sec').valueAsNumber;
+    hrs = document.querySelector('.hrs').valueAsNumber;
+    min = document.querySelector('.min').valueAsNumber;
+    sec = document.querySelector('.sec').valueAsNumber;
     const timeInSec = (hrs*60*60) + min*60 + sec;
     fullSeconds = timeInSec;
     return fullSeconds;
@@ -71,7 +74,7 @@ function buttons(){
 }
 
 function alert(){
-    if (hours.innerHTML === "0" && minutes.innerHTML === "0" && seconds.innerHTML === "0"){
+    if (hours.innerHTML === "0:" && minutes.innerHTML === "0:" && seconds.innerHTML === "0"){
         sound.play();
         sound.volume = 0.01;
     }
