@@ -26,8 +26,8 @@ function cleare(){
 }
 
 function pause(){
-    document.querySelector('.hrs').value = hours.innerHTML.slice(0, -1);
-    document.querySelector('.min').value = minutes.innerHTML.slice(0, -1);
+    document.querySelector('.hrs').value = hours.innerHTML;
+    document.querySelector('.min').value = minutes.innerHTML;
     document.querySelector('.sec').value = seconds.innerHTML;
     fullSeconds = 0;
     sound.pause();
@@ -55,11 +55,11 @@ const hors = Math.floor(fullSeconds / 60 / 60);
 const mnts = Math.floor((fullSeconds - (hors * 60 * 60)) / 60) % 60;
 const scnds = Math.floor(fullSeconds - (hors * 60 * 60) - (mnts * 60));
 
-hours.innerHTML = hors + ":";
-minutes.innerHTML = mnts + ":";
+hours.innerHTML = hors;
+minutes.innerHTML = mnts;
 seconds.innerHTML = scnds;
 
-document.title = "TIMER | " + hors + ":" + mnts + ":" + scnds;
+document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds;
 
 alert();
 buttons();
@@ -74,7 +74,7 @@ function buttons(){
 }
 
 function alert(){
-    if (hours.innerHTML === "0:" && minutes.innerHTML === "0:" && seconds.innerHTML === "0"){
+    if (hours.innerHTML === "0" && minutes.innerHTML === "0" && seconds.innerHTML === "0"){
         sound.play();
         sound.volume = 0.01;
     }

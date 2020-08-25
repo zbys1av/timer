@@ -12,7 +12,6 @@ const loading = document.getElementById("loading");
 let fullSeconds = 0;
 let mseconds = 0;
 let pauseTimer = 1;
-let intervalTime = 10;
 let laps = 0;
 
 let hors = 0;
@@ -37,9 +36,9 @@ function lap(){
     laps++;
     // let displayValue = history.innerHTML;
     if (history.value === ""){
-        history.value = "lap " + laps + "-> " + hours.innerHTML + minutes.innerHTML + seconds.innerHTML + ":" + msec.innerHTML;
+        history.value = "lap " + laps + "-> " + hours.innerHTML + ":" + minutes.innerHTML + ":" + seconds.innerHTML + ":" + msec.innerHTML;
     } else {
-        history.value = "lap " + laps + "-> " + hours.innerHTML + minutes.innerHTML + seconds.innerHTML + ":" + msec.innerHTML + "\n" + history.value;
+        history.value = "lap " + laps + "-> " + hours.innerHTML + ":" + minutes.innerHTML + ":" + seconds.innerHTML + ":" + msec.innerHTML + "\n" + history.value;
     }
     cleare();
 }
@@ -77,11 +76,11 @@ function cleare(){
 function miliseconds(){
     if (pauseTimer === 0){
         mseconds++;
-        if (pauseTimer === 1){
-            return;
-        }
+        document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds  + " : " + mseconds;
+        // if (pauseTimer === 1){
+        //     return;
+        // }
         msec.innerHTML = mseconds;
-        updateCountdown();
     }
     if (hors > 0){
         document.getElementById("hours").style.display = "block";
@@ -91,6 +90,7 @@ function miliseconds(){
         document.getElementById("minutes").style.display = "block";
         // document.getElementById("minutesUnderText").style.display = "block";
     }
+    updateCountdown();
 }
 
 // && minutes.innerHTML === "0" && seconds.innerHTML === "0"
@@ -105,14 +105,11 @@ function startButton(){
     //     updateCountdown();
     // }
     pauseTimer = 0;
-    if (pauseTimer === 0){
-        // interval();    
-        miliseconds();
-        updateCountdown();
-    }
-    if (pauseTimer === 0){
-        intervalTime = 10;
-    }
+    // if (pauseTimer === 0){
+    //     // interval();    
+    //     miliseconds();
+    //     updateCountdown();
+    // }
 }
 
 function pause(){
@@ -127,7 +124,7 @@ function pause(){
 //     // document.querySelector(".cleare").style.visibility = "visible";
 //     // setTimeout(updateCountdown, 100000000000000);
     // setTimeout(miliseconds, 1000000000000);
-    setInterval(miliseconds, 100000000000000);
+    // setInterval(miliseconds, 100000000000000);
     pauseTimer = 1;
 }
 
@@ -141,11 +138,11 @@ function changeDate(){
 }
 
 function updateCountdown() {
-    if (pauseTimer === 1){
-        return;
-    }
+    // if (pauseTimer === 1){
+    //     return;
+    // }
     if (pauseTimer === 0){
-        if (mseconds > 99){
+        if (mseconds > 98){
             mseconds = 0;
             fullSeconds ++;
         // if (fullSeconds > 0){
@@ -158,11 +155,11 @@ function updateCountdown() {
         mnts = Math.floor((fullSeconds - (hors * 60 * 60)) / 60) % 60;
         scnds = Math.floor(fullSeconds - (hors * 60 * 60) - (mnts * 60));
         
-        hours.innerHTML = hors + ":";
-        minutes.innerHTML = mnts + ":";
+        hours.innerHTML = hors ;
+        minutes.innerHTML = mnts;
         seconds.innerHTML = scnds;
             
-        document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds;
+        // document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds;
 
         // alert();
         // buttons();
@@ -185,7 +182,5 @@ function updateCountdown() {
 //     }
 // }
 
-if (fullSeconds === 0){
-    setInterval(miliseconds, intervalTime);
+    setInterval(miliseconds, 10);
     // can use some VARIABLE, because after resuming timer it starts in that milisecond where finished
-}
