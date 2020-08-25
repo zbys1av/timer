@@ -54,7 +54,6 @@ function fullCleare(){
     msec.innerHTML = "00";
     history.value = "";
     mseconds = 0;
-
 }
 
 function cleare(){
