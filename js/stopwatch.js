@@ -9,7 +9,8 @@ const date = document.getElementById("date");
 const loading = document.getElementById("loading");
 // let sound = new Audio("mp3/alarm.mp3");
 
-let fullSeconds = 0;
+
+let fullSeconds = -1;
 let mseconds = 0;
 let pauseTimer = 1;
 let laps = 0;
@@ -75,9 +76,12 @@ function cleare(){
 function miliseconds(){
     if (pauseTimer === 0){
         mseconds++;
-        document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds  + " : " + mseconds;
+        // document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds  + " : " + mseconds;
         // if (pauseTimer === 1){
         //     return;
+        // }
+        // if (mseconds > 98){
+        //     mseconds = 0;
         // }
         msec.innerHTML = mseconds;
     }
@@ -89,7 +93,6 @@ function miliseconds(){
         document.getElementById("minutes").style.display = "block";
         // document.getElementById("minutesUnderText").style.display = "block";
     }
-    updateCountdown();
 }
 
 // && minutes.innerHTML === "0" && seconds.innerHTML === "0"
@@ -137,13 +140,17 @@ function changeDate(){
 }
 
 function updateCountdown() {
+    let a = fullSeconds;
     // if (pauseTimer === 1){
     //     return;
     // }
     if (pauseTimer === 0){
-        if (mseconds > 98){
-            mseconds = 0;
+        // if (mseconds > 98){
+        //     mseconds = 0;
             fullSeconds ++;
+            if (a !== fullSeconds){
+                mseconds = 0;
+            }
         // if (fullSeconds > 0){
         // fullSeconds++;
         // if (fullSeconds < 0){
@@ -157,12 +164,11 @@ function updateCountdown() {
         hours.innerHTML = hors ;
         minutes.innerHTML = mnts;
         seconds.innerHTML = scnds;
-            
-        // document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds;
+        document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds;
 
         // alert();
         // buttons();
-        }
+        // }
     }
 }
 
@@ -181,5 +187,6 @@ function updateCountdown() {
 //     }
 // }
 
+    setInterval(updateCountdown, 1000);
     setInterval(miliseconds, 10);
     // can use some VARIABLE, because after resuming timer it starts in that milisecond where finished
