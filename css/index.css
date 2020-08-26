@@ -152,15 +152,23 @@ button:focus{
 }
 
 footer{
-    color: white;
+    color: black;
     position: absolute;
     top: 95%;
+    z-index: -1;
+    opacity: 0.1;
+    position: absolute;
+    user-select: none;
+    /* top: 90%; */
+    /* left: 10%; */
+    /* transform: translateX(-50%); */
+    transition: all 0.7s;
 }
 
 footer p{
+    z-index: -1;
     text-transform: uppercase;
     font-size: 10px;
-    background-color:rgba(15, 15, 15, 0.342);
+    background-color:rgba(255, 255, 255, 0.507);
     padding: 2px;
-    border: 1px solid white;
 }
