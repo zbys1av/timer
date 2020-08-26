@@ -9,7 +9,6 @@ const date = document.getElementById("date");
 const loading = document.getElementById("loading");
 // let sound = new Audio("mp3/alarm.mp3");
 
-
 let fullSeconds = -1;
 let mseconds = 0;
 let pauseTimer = 1;
@@ -37,9 +36,9 @@ function lap(){
     laps++;
     // let displayValue = history.innerHTML;
     if (history.value === ""){
-        history.value = "lap " + laps + "-> " + hours.innerHTML + ":" + minutes.innerHTML + ":" + seconds.innerHTML + ":" + msec.innerHTML;
+        history.value = "LAP " + laps + " -> " + hours.innerHTML + ":" + minutes.innerHTML + ":" + seconds.innerHTML + ":" + msec.innerHTML;
     } else {
-        history.value = "lap " + laps + "-> " + hours.innerHTML + ":" + minutes.innerHTML + ":" + seconds.innerHTML + ":" + msec.innerHTML + "\n" + history.value;
+        history.value = "LAP " + laps + " -> " + hours.innerHTML + ":" + minutes.innerHTML + ":" + seconds.innerHTML + ":" + msec.innerHTML + "\n" + history.value;
     }
     cleare();
 }
@@ -55,6 +54,7 @@ function fullCleare(){
     msec.innerHTML = "00";
     history.value = "";
     mseconds = 0;
+    laps = 0;
 }
 
 function cleare(){
