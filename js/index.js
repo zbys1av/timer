@@ -7,6 +7,7 @@ const date = document.getElementById("date");
 const loading = document.getElementById("loading");
 let sound = new Audio("mp3/alarm.mp3");
 let fullSeconds = 0;
+let alertWaiting = 0;
 let hrs;
 let min;
 let sec;
@@ -49,6 +50,8 @@ function changeDate(){
 function updateCountdown() {
 fullSeconds--;
 if (fullSeconds < 0){
+    alertWaiting++;
+    alert();
     return;
 }
 const hors = Math.floor(fullSeconds / 60 / 60);
@@ -77,6 +80,10 @@ function alert(){
     if (hours.innerHTML === "0" && minutes.innerHTML === "0" && seconds.innerHTML === "0"){
         sound.play();
         sound.volume = 0.01;
+    }
+    if (alertWaiting === 5){
+        fullSeconds = 600;
+        updateCountdown();
     }
 }
 
