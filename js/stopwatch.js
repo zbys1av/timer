@@ -75,6 +75,9 @@ function cleare(){
 
 function miliseconds(){
     if (pauseTimer === 0){
+        if (mseconds > 99){
+            mseconds = 0;
+        }
         mseconds++;
         // document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds  + " : " + mseconds;
         // if (pauseTimer === 1){

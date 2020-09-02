@@ -50,8 +50,6 @@ function changeDate(){
 function updateCountdown() {
 fullSeconds--;
 if (fullSeconds < 0){
-    alertWaiting++;
-    alert();
     return;
 }
 const hors = Math.floor(fullSeconds / 60 / 60);
@@ -79,16 +77,16 @@ function buttons(){
 function alert(){
     if (hours.innerHTML === "0" && minutes.innerHTML === "0" && seconds.innerHTML === "0"){
         sound.play();
+        sound.loop = true;
         sound.volume = 0.01;
-    }
-    if (alertWaiting === 5){
-        fullSeconds = 600;
-        updateCountdown();
     }
 }
 
 // run every second
 function startButton(){
+    if (document.querySelector('.hrs').value > "999"){
+        document.querySelector('.hrs').value = 999;
+    }
     if (document.querySelector('.hrs').value === ""){
         document.querySelector('.hrs').value = 0;
     }

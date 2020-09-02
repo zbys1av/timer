@@ -44,8 +44,9 @@ a{
     text-transform: uppercase;
     text-decoration: none;
     border: 1px solid white;
-    transition: 0.3s;
-    font-size: 13px;
+    background-color: rgba(255, 0, 0, 0.342);
+    transition: 0.4s;
+    font-size: 14px;
     padding: 0 6px 0 6px;
 }
 
@@ -53,7 +54,7 @@ a:hover{
     border: 1px solid white;
     color: black;
     background-color: rgba(255, 255, 255, 0.342);
-    transition: 0.3s;
+    transition: 0.4s;
 }
 
 header{
@@ -73,6 +74,7 @@ input{
     background-color: rgba(15, 15, 15, 0.542);
     border: 1px solid white;
     transition: 0.4s;
+    font-size: 15px;
 }
 
 input::placeholder{
@@ -91,6 +93,8 @@ button{
     border: 1px solid white;
     transition: 0.4s;
     text-transform: uppercase;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 button:hover{
@@ -137,7 +141,7 @@ button:focus{
 }
 
 #seconds{
-    width: 55px;
+    width: 60px;
 }
 
 #msec{
@@ -160,8 +164,8 @@ footer{
     color: white;
     position: absolute;
     top: 95%;
+    opacity: 0.3;
     z-index: -1;
-    opacity: 0.1;
     position: absolute;
     user-select: none;
     /* top: 90%; */
@@ -174,6 +178,5 @@ footer p{
     z-index: -1;
     text-transform: uppercase;
     font-size: 10px;
-    background-color:rgba(255, 255, 255, 0.507);
     padding: 2px;
 }
