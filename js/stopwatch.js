@@ -101,6 +101,7 @@ function miliseconds(){
 // && minutes.innerHTML === "0" && seconds.innerHTML === "0"
 
 function startButton(){
+    
     document.querySelector(".startTimer").style.visibility = "hidden";
     // if (document.querySelector('.hrs').value === "" && document.querySelector('.min').value === "" && document.querySelector('.sec').value === ""){
     //     fullSeconds = 0.0000000000000000001;
