@@ -59,6 +59,8 @@ function cleare(){
     document.querySelector('.min').value = "";
     document.querySelector('.sec').value = "";
 
+    document.title = "TIMER";
+
     hours.innerHTML = "00";
     minutes.innerHTML = "00";
     seconds.innerHTML = "00";
