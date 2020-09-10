@@ -23,6 +23,12 @@ document.querySelector('.cleare').addEventListener('click', cleare);
 document.querySelector('.reset').addEventListener('click', reset);
 document.querySelector('.resume').addEventListener('click', resume);
 
+function changeDate(){
+    let myDate = new Date(document.querySelector('.newDate').valueAsNumber);
+    const newYearTime = new Date(myDate);
+    return newYearTime;
+  }
+
 function reset(){
     document.querySelector(".startTimer").style.display = "inline";
     document.querySelector(".resume").style.display = "none";
@@ -98,24 +104,37 @@ function changeDate(){
 }
 
 function updateCountdown() {
+    const currentTime = new Date();
+    const diff = currentTime - changeDate();
+
+    const d = Math.floor(diff / 1000 / 60 / 60 / 24);
+    const h = 1 + Math.floor(diff / 1000 / 60 / 60) % 24;
+    const m = Math.floor(diff / 1000 / 60) % 60;
+    const s = Math.floor(diff / 1000) % 60;
+
+    // add values to dom
+    days.innerHTML = d;
+    hours.innerHTML = h < 10 ? "0" + h : h;
+    minutes.innerHTML = m < 10 ? "0" + m : m;
+    seconds.innerHTML = s < 10 ? "0" + s : s;
     // if (fullSeconds < 0){
     //     return;
     // }
-    if (pauseTimer === 0){
-        fullSeconds--;
-        const hors = Math.floor(fullSeconds / 60 / 60);
-        const mnts = Math.floor((fullSeconds - (hors * 60 * 60)) / 60) % 60;
-        const scnds = Math.floor(fullSeconds - (hors * 60 * 60) - (mnts * 60));
+    // if (pauseTimer === 0){
+    //     fullSeconds--;
+    //     const hors = Math.floor(fullSeconds / 60 / 60);
+    //     const mnts = Math.floor((fullSeconds - (hors * 60 * 60)) / 60) % 60;
+    //     const scnds = Math.floor(fullSeconds - (hors * 60 * 60) - (mnts * 60));
 
-        hours.innerHTML = hors;
-        minutes.innerHTML = mnts;
-        seconds.innerHTML = scnds;
+    //     hours.innerHTML = hors;
+    //     minutes.innerHTML = mnts;
+    //     seconds.innerHTML = scnds;
 
-        document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds;
+    //     document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds;
 
-        alert();
-        buttons();
-    }
+    //     alert();
+    //     buttons();
+    // }
 }
 
 function buttons(){

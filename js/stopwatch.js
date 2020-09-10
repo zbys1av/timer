@@ -8,6 +8,12 @@ const countdown = document.getElementById("countdown");
 const date = document.getElementById("date");
 const loading = document.getElementById("loading");
 // let sound = new Audio("mp3/alarm.mp3");
+let startTime;
+let currentTime;
+let startMilliseconds;
+let currentMilliseconds;
+let diff;
+let secondDiff = 0;
 
 let fullSeconds = -1;
 let mseconds = 0;
@@ -18,9 +24,9 @@ let hors = 0;
 let mnts = 0;
 let scnds = 0;
 
-document.getElementById("hours").style.display = "none";
+// document.getElementById("hours").style.display = "none";
 // document.getElementById("hoursUnderText").style.display = "none";
-document.getElementById("minutes").style.display = "none";
+// document.getElementById("minutes").style.display = "none";
 // document.getElementById("minutesUnderText").style.display = "none";
 
 document.querySelector(".hrs").style.visibility = "hidden";
@@ -33,75 +39,88 @@ document.querySelector('.cleare').addEventListener('click', fullCleare);
 document.querySelector('.lap').addEventListener('click', lap);
 
 function lap(){
+    startTime = Math.floor(new Date().getTime() / 1000);
     laps++;
     // let displayValue = history.innerHTML;
     if (history.value === ""){
-        history.value = "LAP " + laps + " -> " + hours.innerHTML + ":" + minutes.innerHTML + ":" + seconds.innerHTML + ":" + msec.innerHTML;
+        history.value = "LAP " + laps + " -> " + hours.innerHTML + ":" + minutes.innerHTML + ":" + seconds.innerHTML;
     } else {
-        history.value = "LAP " + laps + " -> " + hours.innerHTML + ":" + minutes.innerHTML + ":" + seconds.innerHTML + ":" + msec.innerHTML + "\n" + history.value;
+        history.value = "LAP " + laps + " -> " + hours.innerHTML + ":" + minutes.innerHTML + ":" + seconds.innerHTML + "\n" + history.value;
     }
     cleare();
 }
 
 function fullCleare(){
+    startTime = Math.floor(new Date().getTime() / 1000);
     document.querySelector('.hrs').value = "";
     document.querySelector('.min').value = "";
     document.querySelector('.sec').value = "";
-    fullSeconds = 0;
+    // fullSeconds = 0;
+    secondDiff = 0;
     hours.innerHTML = "00";
     minutes.innerHTML = "00";
     seconds.innerHTML = "00";
-    msec.innerHTML = "00";
+    // msec.innerHTML = "00";
     history.value = "";
-    mseconds = 0;
+    // mseconds = 0;
     laps = 0;
 }
 
 function cleare(){
+    startTime = Math.floor(new Date().getTime() / 1000);
     document.querySelector('.hrs').value = "";
     document.querySelector('.min').value = "";
     document.querySelector('.sec').value = "";
-    fullSeconds = 0;
+    // fullSeconds = 0;
+    secondDiff = 0;
     hours.innerHTML = "00";
     minutes.innerHTML = "00";
     seconds.innerHTML = "00";
-    msec.innerHTML = "00";
-    mseconds = 0;
+    // msec.innerHTML = "00";
+    // mseconds = 0;
 }
 
 // if (hours.innerHTML === "00"){
 //     document.querySelector(".hours").style.visibility = "hidden";
 // }
 
-function miliseconds(){
-    if (pauseTimer === 0){
-        if (mseconds > 99){
-            mseconds = 0;
-        }
-        mseconds++;
-        // document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds  + " : " + mseconds;
-        // if (pauseTimer === 1){
-        //     return;
-        // }
-        // if (mseconds > 98){
-        //     mseconds = 0;
-        // }
-        msec.innerHTML = mseconds;
-    }
-    if (hors > 0){
-        document.getElementById("hours").style.display = "block";
-        // document.getElementById("hoursUnderText").style.display = "block";
-    }
-    if (mnts > 0){
-        document.getElementById("minutes").style.display = "block";
-        // document.getElementById("minutesUnderText").style.display = "block";
-    }
-}
+// function miliseconds(){
+//     if (pauseTimer === 0){
+//         if (mseconds > 7){
+//             // mseconds = 0;
+//             startMilliseconds = Date.now();
+//         }
+//         currentMilliseconds = Date.now();
+//         mseconds = Math.floor((currentMilliseconds - startMilliseconds)/100);
+//         // document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds  + " : " + mseconds;
+//         // if (pauseTimer === 1){
+//         //     return;
+//         // }
+//         // if (mseconds > 98){
+//         //     mseconds = 0;
+//         // }
+//         msec.innerHTML = mseconds;
+//     }
+//     if (hors > 0){
+//         document.getElementById("hours").style.display = "block";
+//         // document.getElementById("hoursUnderText").style.display = "block";
+//     }
+//     if (mnts > 0){
+//         document.getElementById("minutes").style.display = "block";
+//         // document.getElementById("minutesUnderText").style.display = "block";
+//     }
+// }
 
 // && minutes.innerHTML === "0" && seconds.innerHTML === "0"
 
 function startButton(){
-    
+    if (secondDiff > 0){
+        startTime = Math.floor(new Date().getTime() / 1000);
+    }
+    if (seconds.innerHTML === "0" || seconds.innerHTML === "00"){
+        startTime = Math.floor(new Date().getTime() / 1000);
+    }
+    startMilliseconds = Date.now();
     document.querySelector(".startTimer").style.visibility = "hidden";
     // if (document.querySelector('.hrs').value === "" && document.querySelector('.min').value === "" && document.querySelector('.sec').value === ""){
     //     fullSeconds = 0.0000000000000000001;
@@ -119,6 +138,7 @@ function startButton(){
 }
 
 function pause(){
+    secondDiff = diff;
 //     // document.querySelector('.hrs').value = hours.innerHTML;
 //     // document.querySelector('.min').value = minutes.innerHTML;
 //     // document.querySelector('.sec').value = seconds.innerHTML;
@@ -134,36 +154,38 @@ function pause(){
     pauseTimer = 1;
 }
 
-function changeDate(){
-    let hrs = document.querySelector('.hrs').valueAsNumber;
-    let min = document.querySelector('.min').valueAsNumber;
-    let sec = document.querySelector('.sec').valueAsNumber;
-    const timeInSec = (hrs*60*60) + min*60 + sec;
-    fullSeconds = timeInSec;
-    return fullSeconds;
-}
+// function changeDate(){
+//     let hrs = document.querySelector('.hrs').valueAsNumber;
+//     let min = document.querySelector('.min').valueAsNumber;
+//     let sec = document.querySelector('.sec').valueAsNumber;
+//     const timeInSec = (hrs*60*60) + min*60 + sec;
+//     fullSeconds = timeInSec;
+//     return fullSeconds;
+// }
 
 function updateCountdown() {
-    let a = fullSeconds;
+    // let a = fullSeconds;
     // if (pauseTimer === 1){
     //     return;
     // }
     if (pauseTimer === 0){
+        currentTime = Math.floor(new Date().getTime() / 1000);
+        diff = currentTime - startTime + secondDiff;
         // if (mseconds > 98){
         //     mseconds = 0;
-            fullSeconds ++;
-            if (a !== fullSeconds){
-                mseconds = 0;
-            }
+            // fullSeconds ++;
+            // if (a !== fullSeconds){
+            //     mseconds = 0;
+            // }
         // if (fullSeconds > 0){
         // fullSeconds++;
         // if (fullSeconds < 0){
         //     return;
         // }
     
-        hors = Math.floor(fullSeconds / 60 / 60);
-        mnts = Math.floor((fullSeconds - (hors * 60 * 60)) / 60) % 60;
-        scnds = Math.floor(fullSeconds - (hors * 60 * 60) - (mnts * 60));
+        hors = Math.floor(diff / 60 / 60);
+        mnts = Math.floor((diff - (hors * 60 * 60)) / 60) % 60;
+        scnds = Math.floor(diff - (hors * 60 * 60) - (mnts * 60));
         
         hours.innerHTML = hors ;
         minutes.innerHTML = mnts;
@@ -192,5 +214,4 @@ function updateCountdown() {
 // }
 
     setInterval(updateCountdown, 1000);
-    setInterval(miliseconds, 10);
-    // can use some VARIABLE, because after resuming timer it starts in that milisecond where finished
+    // setInterval(miliseconds, 0.1);
