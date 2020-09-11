@@ -6,6 +6,8 @@ const countdown = document.getElementById("countdown");
 const date = document.getElementById("date");
 const loading = document.getElementById("loading");
 let sound = new Audio("mp3/alarm.mp3");
+let startTime;
+let timeNow;
 let fullSeconds = 0;
 let alertWaiting = 0;
 let hrs;
@@ -43,6 +45,8 @@ function reset(){
 }
 
 function resume(){
+    startTime = Math.floor(new Date().getTime() / 1000);
+    fullSeconds = currentTime;
     document.querySelector(".resume").style.display = "none";
     // document.querySelector('.hrs').value = hours.innerHTML;
     // document.querySelector('.min').value = minutes.innerHTML;
@@ -56,23 +60,17 @@ function cleare(){
     document.querySelector(".reset").style.display = "none";
     document.querySelector(".cleare").style.display = "none";
     document.querySelector(".startTimer").style.display = "inline";
-
     document.querySelector(".hrs").style.visibility = "visible";
     document.querySelector(".min").style.visibility = "visible";
     document.querySelector(".sec").style.visibility = "visible";
-
     document.querySelector('.hrs').value = "";
     document.querySelector('.min').value = "";
     document.querySelector('.sec').value = "";
-
     document.title = "TIMER";
-
     hours.innerHTML = "00";
     minutes.innerHTML = "00";
     seconds.innerHTML = "00";
-
     fullSeconds = 0;
-
     pauseTimer = 1;
 }
 
@@ -104,37 +102,41 @@ function changeDate(){
 }
 
 function updateCountdown() {
-    const currentTime = new Date();
-    const diff = currentTime - changeDate();
+    if (pauseTimer === 0){
+    timeNow = Math.floor(new Date().getTime() / 1000);
+    currentTime = fullSeconds - (timeNow - startTime);
+    // const currentTime = new Date();
+    // const diff = currentTime - changeDate();
 
-    const d = Math.floor(diff / 1000 / 60 / 60 / 24);
-    const h = 1 + Math.floor(diff / 1000 / 60 / 60) % 24;
-    const m = Math.floor(diff / 1000 / 60) % 60;
-    const s = Math.floor(diff / 1000) % 60;
+    // const d = Math.floor(currentTime / 1000 / 60 / 60 / 24);
+    // const h = 1 + Math.floor(currentTime / 1000 / 60 / 60) % 24;
+    // const m = Math.floor(currentTime / 1000 / 60) % 60;
+    // const s = Math.floor(currentTimeff / 1000) % 60;
 
     // add values to dom
-    days.innerHTML = d;
-    hours.innerHTML = h < 10 ? "0" + h : h;
-    minutes.innerHTML = m < 10 ? "0" + m : m;
-    seconds.innerHTML = s < 10 ? "0" + s : s;
-    // if (fullSeconds < 0){
-    //     return;
-    // }
+    // days.innerHTML = d;
+    // hours.innerHTML = h < 10 ? "0" + h : h;
+    // minutes.innerHTML = m < 10 ? "0" + m : m;
+    // seconds.innerHTML = s < 10 ? "0" + s : s;
+    if (currentTime < 0){
+        return;
+    }
     // if (pauseTimer === 0){
     //     fullSeconds--;
-    //     const hors = Math.floor(fullSeconds / 60 / 60);
-    //     const mnts = Math.floor((fullSeconds - (hors * 60 * 60)) / 60) % 60;
-    //     const scnds = Math.floor(fullSeconds - (hors * 60 * 60) - (mnts * 60));
+        const hors = Math.floor(currentTime / 60 / 60);
+        const mnts = Math.floor((currentTime - (hors * 60 * 60)) / 60) % 60;
+        const scnds = Math.floor(currentTime - (hors * 60 * 60) - (mnts * 60));
 
-    //     hours.innerHTML = hors;
-    //     minutes.innerHTML = mnts;
-    //     seconds.innerHTML = scnds;
+        hours.innerHTML = hors;
+        minutes.innerHTML = mnts;
+        seconds.innerHTML = scnds;
 
-    //     document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds;
+        document.title = "TIMER | " + hors + " : " + mnts + " : " + scnds;
 
-    //     alert();
+        alert();
     //     buttons();
     // }
+    }
 }
 
 function buttons(){
@@ -155,6 +157,7 @@ function alert(){
 
 // run every second
 function startButton(){    
+    startTime = Math.floor(new Date().getTime() / 1000);
     document.querySelector(".hrs").style.visibility = "hidden";
     document.querySelector(".min").style.visibility = "hidden";
     document.querySelector(".sec").style.visibility = "hidden";
