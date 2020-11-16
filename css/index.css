@@ -3,7 +3,7 @@
 body{
     /* background-image: url(../img/clock.jpg); */
     /* background-repeat: no-repeat;  */
-    background: radial-gradient(#5355c2 425px,#c25da0);
+    background: radial-gradient(#242424 325px,#b5b5b5);
     /* background-size: cover; */
     /* background-position: center center; */
     height: 100vh;
@@ -127,7 +127,7 @@ button:focus{
     /* border-left: 1px solid white;
     border-bottom: 1px solid white; */
     /* background-color: #5355c2; */
-    background: radial-gradient(#c25da0, #5355c2 125px);
+    background: radial-gradient(#b5b5b5 125px);
     /* radial-gradient( #606dbc, #606dbc 6px, #465298 6px, #465298 12px) */
 }
 
