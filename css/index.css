@@ -17,13 +17,17 @@ body{
     overflow: hidden;
 }
 
+p{
+    line-height: 2.5;
+}
+
+img{
+    opacity: 0.4;
+}
+
 .history{
     display: flex;
     justify-content: flex-end;
-}
-
-p{
-    line-height: 2.5;
 }
 
 textarea{
@@ -33,6 +37,21 @@ textarea{
     background-color: rgba(0, 0, 0, 0.342);
     border: 1px solid white;
     height: 250px;
+}
+
+textarea:focus{
+    outline: none;
+}
+a{
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid white;
+    background-color: rgba(255, 0, 0, 0.342);
+    transition: 0.4s;
+    font-size: 14px;
+    padding: 0 6px 0 6px;
+    padding: 0 5px 0 5px;
 }
 
 textarea:focus{
@@ -70,14 +89,13 @@ input::-webkit-inner-spin-button {
 }
 
 input{
-    display: none;
     color: white;
     background-color: rgba(15, 15, 15, 0.542);
+    background-color: rgba(255, 255, 255, 0.242);
     border: 1px solid white;
     transition: 0.4s;
     font-size: 15px;
 }
-
 input::placeholder{
     color: white;
 }
