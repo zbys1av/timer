@@ -17,17 +17,13 @@ body{
     overflow: hidden;
 }
 
-p{
-    line-height: 2.5;
-}
-
-img{
-    opacity: 0.4;
-}
-
 .history{
     display: flex;
     justify-content: flex-end;
+}
+
+p{
+    line-height: 2.5;
 }
 
 textarea{
@@ -74,8 +70,9 @@ input::-webkit-inner-spin-button {
 }
 
 input{
+    display: none;
     color: white;
-    background-color: rgba(255, 255, 255, 0.242);
+    background-color: rgba(15, 15, 15, 0.542);
     border: 1px solid white;
     transition: 0.4s;
     font-size: 15px;
@@ -86,7 +83,7 @@ input::placeholder{
 }
 
 input:focus{
-    background-color: rgba(0, 0, 0, 0.242);
+    background-color: rgba(255, 255, 2555, 0.242);
     outline: none;
     transition: 0.4s;
 }
@@ -124,7 +121,7 @@ button:focus{
     transform: scale(2);
     padding: 15px;
     border: 1px solid rgba(255, 255, 255, 0.747);
-    /* border-left: 1px solid white;
+    /* border-top: 1px solid white;
     border-bottom: 1px solid white; */
     /* background-color: #5355c2; */
     background: radial-gradient(#b5b5b5 125px);
@@ -141,18 +138,22 @@ button:focus{
 }
 
 #hours{
+    /* padding: 1px 5px 1px 5px; */
     width: 55px;
 }
 
 #minutes{
+    /* padding: 1px 5px 1px 5px; */
     width: 55px;
 }
 
 #seconds{
+    /* padding: 1px 5px 1px 5px; */
     width: 55px;
 }
 
 /* #msec{
+    padding: 1px 5px 1px 5px;
     width: 55px;
 } */
   

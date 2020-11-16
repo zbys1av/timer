@@ -1,1 +1,1 @@
-https://zebestlove.github.io/timer/
+https://zbys1av.github.io/timer/
